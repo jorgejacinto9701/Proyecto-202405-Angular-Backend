@@ -13,4 +13,11 @@ public interface UsuarioService {
 	public abstract List<Rol> traerRolesDeUsuario(int idUsuario);
 
 	public abstract Usuario buscaPorLogin(String login);
+
+	public abstract List<Usuario> listaJefePrestamistaTotales();
+
+	public abstract List<Usuario> listaPrestamistaDeUnJefe(int idUsuario);
+
+	public abstract List<Usuario> listaPrestamistariosDeUnPrestamista(int idUsuario);
+
 }

@@ -32,4 +32,19 @@ public class UsuarioServiceImpl implements UsuarioService{
 		return repository.findByLogin(login);
 	}
 
+	@Override
+	public List<Usuario> listaJefePrestamistaTotales() {
+		return repository.listaJefePrestamistaTotales();
+	}
+
+	@Override
+	public List<Usuario> listaPrestamistaDeUnJefe(int idUsuario) {
+		return repository.listaPrestamistaDeUnJefe(idUsuario);
+	}
+
+	@Override
+	public List<Usuario> listaPrestamistariosDeUnPrestamista(int idUsuario) {
+		return repository.listaPrestamistariosDeUnPrestamista(idUsuario);
+	}
+
 }

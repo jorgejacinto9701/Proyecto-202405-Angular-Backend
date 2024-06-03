@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.prestamo.entity.DataCatalogo;
 import com.prestamo.entity.Pais;
 import com.prestamo.entity.Ubigeo;
+import com.prestamo.entity.Usuario;
 import com.prestamo.service.DataCatalogoService;
 import com.prestamo.service.PaisService;
 import com.prestamo.service.UbigeoService;
+import com.prestamo.service.UsuarioService;
 import com.prestamo.util.AppSettings;
 
 @RestController
@@ -32,6 +34,9 @@ public class UtilController {
 	@Autowired
 	private UbigeoService ubigeoService;
 	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 
 	@GetMapping("/listaPais")
 	@ResponseBody
@@ -41,19 +46,19 @@ public class UtilController {
 	
 	@GetMapping("/listaTipoEntidadBancaria")
 	@ResponseBody
-	public List<DataCatalogo> listaCategoriaDeLibro() {
+	public List<DataCatalogo> listaTipoEntidadBancaria() {
 		return dataCatalogoService.listaDataCatalogo(AppSettings.CATALOGO_01_TIPO_DE_ENDIDAD_BANCARIA);
 	}
 	
 	@GetMapping("/listaTipoMoneda")
 	@ResponseBody
-	public List<DataCatalogo> listaTipoProveedor() {
+	public List<DataCatalogo> listaTipoMoneda() {
 		return dataCatalogoService.listaDataCatalogo(AppSettings.CATALOGO_02_TIPO_DE_MONEDA);
 	}
 	
 	@GetMapping("/listaDiasPrestamo")
 	@ResponseBody
-	public List<DataCatalogo> listaModalidadAlumno() {
+	public List<DataCatalogo> listaDiasPrestamo() {
 		return dataCatalogoService.listaDataCatalogo(AppSettings.CATALOGO_03_DIAS_DE_PRESTAMO);
 	}
 	
@@ -80,5 +85,24 @@ public class UtilController {
 	public List<Ubigeo> verDistritos(@PathVariable("paramDepar")String departamento, @PathVariable("paramProv")String provincia) {
 		return ubigeoService.listaDistritos(departamento, provincia);
 	}
+	
+	@GetMapping("/listaJefePrestamistaTotales")
+	@ResponseBody
+	public List<Usuario> listaJefePrestamistaTotales() {
+		return usuarioService.listaJefePrestamistaTotales();
+	}
 
+	@GetMapping("/listaPrestamistaDeUnJefe/{param}")
+	@ResponseBody
+	public List<Usuario> listaPrestamistaDeUnJefe(@PathVariable("param") int idJefePrestamista) {
+		return usuarioService.listaPrestamistaDeUnJefe(idJefePrestamista);
+	}
+
+	@GetMapping("/listaPrestamistariosDeUnPrestamista/{param}")
+	@ResponseBody
+	public List<Usuario> listaPrestamistariosDeUnPrestamista(@PathVariable("param") int idPrestamistarios) {
+		return usuarioService.listaPrestamistariosDeUnPrestamista(idPrestamistarios);
+	}
+
+	
 }
