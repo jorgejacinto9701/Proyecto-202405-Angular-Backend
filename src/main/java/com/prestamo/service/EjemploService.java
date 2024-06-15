@@ -6,7 +6,14 @@ import com.prestamo.entity.Ejemplo;
 
 public interface EjemploService {
 
-	public abstract Ejemplo insertaActualizaEjemplo(Ejemplo obj);
-	public abstract List<Ejemplo> listaEjemplo();
+
+	//Para Validaciones
 	public abstract List<Ejemplo> listaEjemploPorDescripcionIgual(String descripcion);
+	
+	//Para el crud
+	public abstract Ejemplo insertaActualizaEjemplo(Ejemplo obj);
+	public abstract List<Ejemplo> listaEjemploPorDescripcionLike(String nombre);
+	public abstract void eliminaEjemplo(int idRevista);
+	public abstract List<Ejemplo> listaEjemplo();
+	
 }
