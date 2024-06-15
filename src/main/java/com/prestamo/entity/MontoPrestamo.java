@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -30,7 +29,7 @@ public class MontoPrestamo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMontoPrestamo;
 	
-	private int capital;
+	private BigDecimal capital;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -49,15 +48,16 @@ public class MontoPrestamo {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaActualizacion;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioRegistro")
 	private Usuario usuarioRegistro;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuarioActualiza")
+	@JoinColumn(name = "idUsuarioActualizacion")
 	private Usuario usuarioActualiza;
+	
 }
 
 

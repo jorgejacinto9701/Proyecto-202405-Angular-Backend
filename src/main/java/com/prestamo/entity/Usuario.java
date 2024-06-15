@@ -3,15 +3,12 @@ package com.prestamo.entity;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -40,10 +37,9 @@ public class Usuario {
 	
 	private String direccion;
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuarioSuperior")
-	private Usuario usuarioSuperior;
+
+	@Column(name="idUsuarioSuperior")
+	private int usuarioSuperior;
 	
 	private int estado;
 	
@@ -55,15 +51,11 @@ public class Usuario {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaActualizacion;
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuarioRegistro")
-	private Usuario usuarioRegistro;
+	@Column(name="idUsuarioRegistro")
+	private int usuarioRegistro;
 	
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUsuarioActualiza")
-	private Usuario usuarioActualiza;
+	@Column(name="idUsuarioActualiza")
+	private int usuarioActualiza;
 	
 	
 	
