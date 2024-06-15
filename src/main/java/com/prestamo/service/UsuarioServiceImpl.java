@@ -33,8 +33,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<Usuario> listaJefePrestamistaTotales(int idUsuario) {
-		return repository.listaJefePrestamistaTotales(idUsuario);
+	public List<Usuario> listaJefePrestamistaTotales() {
+		return repository.listaJefePrestamistaTotales();
 	}
 
 	@Override

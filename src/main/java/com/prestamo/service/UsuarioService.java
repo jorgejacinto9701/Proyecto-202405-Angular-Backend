@@ -14,7 +14,7 @@ public interface UsuarioService {
 
 	public abstract Usuario buscaPorLogin(String login);
 
-	public abstract List<Usuario> listaJefePrestamistaTotales(int idUsuario);
+	public abstract List<Usuario> listaJefePrestamistaTotales();
 
 	public abstract List<Usuario> listaPrestamistaDeUnJefe(int idUsuario);
 
