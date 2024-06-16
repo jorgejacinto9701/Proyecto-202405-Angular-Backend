@@ -57,7 +57,7 @@ public class EjemploCrudController {
 			if (objSalida == null) {
 				salida.put("mensaje", AppSettings.MENSAJE_REG_ERROR);
 			} else {
-				salida.put("mensaje", AppSettings.MENSAJE_REG_EXITOSO);
+				salida.put("mensaje", AppSettings.MENSAJE_REG_EXITOSO + " Ejemplo de ID ==> " + obj.getIdEjemplo() + ".");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class EjemploCrudController {
 			if (objSalida == null) {
 				salida.put("mensaje", AppSettings.MENSAJE_ACT_ERROR);
 			} else {
-				salida.put("mensaje", AppSettings.MENSAJE_ACT_EXITOSO);
+				salida.put("mensaje", AppSettings.MENSAJE_ACT_EXITOSO + " Ejemplo de ID ==> " + obj.getIdEjemplo() + ".");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
