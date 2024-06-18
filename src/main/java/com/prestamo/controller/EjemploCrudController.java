@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -94,12 +95,25 @@ public class EjemploCrudController {
 		Map<String, Object> salida = new HashMap<>();
 		try {
 			ejemploService.eliminaEjemplo(idEjemplo);
-			salida.put("mensaje", AppSettings.MENSAJE_ELI_EXITOSO);
+			salida.put("mensaje", AppSettings.MENSAJE_ELI_EXITOSO + " Ejemplo de ID ==> " + idEjemplo + "." );
 		} catch (Exception e) {
 			e.printStackTrace();
 			salida.put("mensaje", AppSettings.MENSAJE_ELI_ERROR);
 		}
 		return ResponseEntity.ok(salida);
 	}
+	
+	@GetMapping("/validaDescripcionActualiza")
+	public String validaDescripcion(@RequestParam(name = "descripcion")String descripcion,
+									@RequestParam(name = "idEjemplo")int idEjemplo) {
+		 List<Ejemplo> lstSalida =ejemploService.listaEjemploPorDescripcionIgualActualiza(descripcion, idEjemplo);
+		 if (lstSalida.isEmpty()) {
+			 return "{\"valid\":true}";
+		 }else {
+			 return "{\"valid\":false}";
+		 }
+			
+	}
+	
 	
 }

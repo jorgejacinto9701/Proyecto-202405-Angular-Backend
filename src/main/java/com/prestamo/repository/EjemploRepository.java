@@ -15,4 +15,7 @@ public interface EjemploRepository extends JpaRepository<Ejemplo, Integer>{
 
 	@Query("select e from Ejemplo e where e.descripcion like ?1")
 	public abstract List<Ejemplo> listaEjemploPorDescripcionLike(String descripcion);
+	
+	@Query("select e from Ejemplo e where e.descripcion = ?1 and e.idEjemplo != ?2 ")
+	public abstract List<Ejemplo> listaEjemploPorDescripcionIgualActualiza(String descripcion, int idEjemplo);
 }
