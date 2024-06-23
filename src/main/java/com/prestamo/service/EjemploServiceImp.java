@@ -1,5 +1,6 @@
 package com.prestamo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class EjemploServiceImp implements EjemploService {
 	@Override
 	public List<Ejemplo> listaEjemploPorDescripcionIgualActualiza(String descripcion, int idEjemplo) {
 		return repository.listaEjemploPorDescripcionIgualActualiza(descripcion, idEjemplo);
+	}
+
+	@Override
+	public List<Ejemplo> listaConsultaCompleja(String descripcion, int idPais, int estado, BigDecimal longitud, int idDias) {
+		return repository.listaConsultaCompleja(descripcion, idPais, estado, longitud, idDias);
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.prestamo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.prestamo.entity.Ejemplo;
@@ -16,5 +17,8 @@ public interface EjemploService {
 	public abstract List<Ejemplo> listaEjemploPorDescripcionLike(String nombre);
 	public abstract void eliminaEjemplo(int idRevista);
 	public abstract List<Ejemplo> listaEjemplo();
+	
+	//Para la consulta
+	public abstract List<Ejemplo> listaConsultaCompleja(String descripcion, int idPais, int estado, BigDecimal longitud, int idDias);
 	
 }
